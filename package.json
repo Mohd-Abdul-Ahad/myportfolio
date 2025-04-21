@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "framer-motion": "^12.7.4"
-  },
-  "devDependencies": {
-    "vite": "^6.3.2"
-  }
-}
