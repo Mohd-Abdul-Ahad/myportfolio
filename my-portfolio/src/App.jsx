@@ -19,14 +19,16 @@ function App() {
       title: "Password Manager",
       description:
         "Secure password management solution with local storage support.",
-      tech: ["React", "Tailwind CSS", "JavaScript"],
+      tech: ["React", "Tailwind CSS", "JavaScript", "Responsive"],
       image: "/passmanager.png",
+      url: "https://pass-op-ashy.vercel.app/",
     },
     {
       title: "Weather App",
       description: "Real-time weather data using  API.",
-      tech: ["JavaScript", "API Integration", "CSS"],
+      tech: ["JavaScript", "API Integration", "CSS", "Responsive"],
       image: "/weather.png",
+      url: "https://weather-website-topaz-ten.vercel.app/",
     },
     {
       title: "Todo List",
@@ -83,12 +85,23 @@ function App() {
             human-centered products.
           </p>
           <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-            <button className="px-6 py-3 rounded-md font-medium bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-950 transition-all duration-300 hover:shadow-lg hover:shadow-blue-400/30">
+            <button
+              onClick={() => {
+                // Create a temporary anchor element
+                const link = document.createElement("a");
+                link.href = "/Mohammed_Abdul_Ahad_Resume.docx"; // Make sure this matches your file name in public folder
+                link.download = "Mohammed_Ahad_CV.docx"; // This will be the suggested filename
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              className="px-6 py-3 rounded-md font-medium bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-950 transition-all duration-300 hover:shadow-lg hover:shadow-blue-400/30"
+            >
               Download CV
             </button>
-            <button className="px-6 py-3 rounded-md font-medium bg-gradient-to-r from-blue-400 to-cyan-400 text-gray-950 hover:shadow-lg hover:shadow-blue-400/30 transition-all duration-300">
+            {/* <button className="px-6 py-3 rounded-md font-medium bg-gradient-to-r from-blue-400 to-cyan-400 text-gray-950 hover:shadow-lg hover:shadow-blue-400/30 transition-all duration-300">
               Contact Me
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="md:w-1/2 flex justify-center">
@@ -122,7 +135,10 @@ function App() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-blue-400/20 transition-all duration-300 group"
+                className="bg-gray-800 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-blue-400/20 transition-all duration-300 group cursor-pointer"
+                onClick={() =>
+                  project.url && window.open(project.url, "_blank")
+                }
               >
                 {project.image && (
                   <div className="h-48 overflow-hidden">
@@ -156,58 +172,65 @@ function App() {
       </section>
 
       {/* Contact Section */}
+      {/* Contact Section */}
       <section
         id="contact"
-        className="py-20 px-6 md:px-12 lg:px-24 bg-gray-950"
+        className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-950"
       >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-blue-400">03.</span> Get In Touch
-          </h2>
-          <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
-            I'm currently looking for new opportunities. Whether you have a
-            question or just want to say hi, I'll do my best to get back to you!
-          </p>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center px-4">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              <span className="text-blue-400">03.</span> Get In Touch
+            </h2>
+            <p className="text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base">
+              I'm currently looking for new opportunities. Whether you have a
+              question or just want to say hi, I'll do my best to get back to
+              you!
+            </p>
+          </div>
 
-          <div className="bg-gray-800/50 rounded-xl p-8 md:p-10 backdrop-blur-sm border border-gray-700 max-w-2xl mx-auto">
-            <div className="space-y-6 text-left">
-              <div className="flex items-start gap-4">
-                <div className="text-blue-400 mt-1">📧</div>
+          <div className="bg-gray-800/50 rounded-xl p-6 sm:p-8 md:p-10 backdrop-blur-sm border border-gray-700 mx-2 sm:mx-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Email */}
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="text-blue-400 mt-1 text-lg sm:text-xl">📧</div>
                 <div>
-                  <h4 className="font-medium">Email</h4>
+                  <h4 className="font-medium text-sm sm:text-base">Email</h4>
                   <a
-                    href="mailto:abdulahad.mohammed@gmail.com"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    href="mailto:abdulahad.mohammedd@gmail.com"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base break-all"
                   >
-                    abdulahad.mohammed@gmail.com
+                    abdulahad.mohammedd@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="text-blue-400 mt-1">📱</div>
+              {/* Phone */}
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="text-blue-400 mt-1 text-lg sm:text-xl">📱</div>
                 <div>
-                  <h4 className="font-medium">Phone</h4>
+                  <h4 className="font-medium text-sm sm:text-base">Phone</h4>
                   <a
                     href="tel:+919963700552"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base"
                   >
                     +91 9963700552
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="text-blue-400 mt-1">🔗</div>
+              {/* LinkedIn - Full width on mobile, spans both columns on larger screens */}
+              <div className="flex items-start gap-3 sm:gap-4 sm:col-span-2">
+                <div className="text-blue-400 mt-1 text-lg sm:text-xl">🔗</div>
                 <div>
-                  <h4 className="font-medium">LinkedIn</h4>
+                  <h4 className="font-medium text-sm sm:text-base">LinkedIn</h4>
                   <a
-                    href="https://linkedin.com/in/your-profile"
+                    href="https://www.linkedin.com/in/mohd-ahad-530a44361"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm sm:text-base"
                   >
-                    linkedin.com/in/your-profile
+                    linkedin.com/in/mohd-ahad-530a44361
                   </a>
                 </div>
               </div>
